@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+
+
+    <main class="layout layout--3">
+      <div class="container">
+        <!-- Topics Start -->
+         <div>
+          {% include 'djangoapp/topic_component.html' %}
+         </div>
+        
+        <!-- Topics End -->
+
+        <!-- Room List Start -->
+         <div>
+          {% include 'djangoapp/feed_component.html' %}
+         </div>
+        
+        <!-- Room List End -->
+
+        <!-- Activities Start -->
+        <div>
+          {% include 'djangoapp/activities_component.html' %}
+         </div>
+        <!-- Activities End -->
+      </div>
+    </main>
+
+
+{% endblock content %}

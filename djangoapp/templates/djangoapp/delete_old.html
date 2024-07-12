@@ -1,0 +1,19 @@
+{% extends 'main.html'  %}
+
+
+{% block content %}
+
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div>
+            are you sure you wanna delete
+            <input type="submit" value="submit">
+        </div>
+        
+    
+
+    </form>
+
+{% endblock content %}
+

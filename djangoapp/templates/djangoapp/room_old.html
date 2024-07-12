@@ -1,0 +1,54 @@
+
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+    <style>
+        .structure{
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+        }
+    </style>
+    
+
+    <div>
+        {{room.name}}    
+    </div>
+    <h2> {{room.decription}} </h2>
+    <hr>
+
+    
+    <div class="structure">
+            <div>
+                {% for messager in room_messages %}
+                    {% if request.user == messager.user %}
+                        <a href="{% url 'deletemessage' messager.id %}">delete</a>
+                    {% endif %} 
+                <div>
+                    <small>@{{messager.user.username}}     {{messager.created | timesince}}</small>
+            
+                </div>
+                    {{messager.body}}
+                <hr>
+                {% endfor %}
+
+                <form method="POST" action="">
+                     {% csrf_token %}
+    
+                     <input type="text" name="body" placeholder="Enter your details here ....." >
+                </form>
+            </div>
+            <div>
+                <h3> PARTICIPANTS </h3>
+
+                {% for user in participant %}
+                    <a href="{% url 'userprofile' user.id %}"><p> @{{user.username}} </p></a>
+
+                {% endfor %}
+            </div>
+
+    </div>
+    
+
+{% endblock content %}
