@@ -94,6 +94,7 @@ def Rooms(request, pk):
             body=request.POST.get('body')
         )
         room.participant.add(request.user)
+        return redirect('Rooms', pk=room.id)
 
     context = {'room':room, 'room_messages' :room_messages, 'participant':participant}
     return render(request, 'djangoapp/room.html', context)
